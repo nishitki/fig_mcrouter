@@ -1,0 +1,23 @@
+memcached1:
+  build: ./memcached1
+  ports:
+    - "11212"
+    - "22"
+  privileged: true
+
+memcached2:
+  build: ./memcached2
+  ports:
+    - "11211"
+    - "22"
+  privileged: true
+
+mcrouter:
+  build: ./mcrouter
+  ports: 
+    - "11211:11211"
+    - "22"
+  links:
+    - memcached1
+    - memcached2
+  privileged: true

@@ -1,0 +1,17 @@
+memcached1: 
+        build: .
+        ports:
+                - '11211:11211' 
+
+memcached2:
+        build: .
+        ports:
+                - '11211:11211'
+
+mcrouter:
+        build: .
+        links:
+        - "memcached1"
+        - "memcached2"
+        ports:
+        - "11211:11211"
