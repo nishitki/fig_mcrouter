@@ -1,0 +1,12 @@
+[Unit]
+Description=mcrouter
+Before=httpd.service
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/sysconfig/mcrouter
+ExecStart=/usr/local/bin/mcrouter -p $PORT -f $CONF
+
+[Install]
+WantedBy=multi-user.target

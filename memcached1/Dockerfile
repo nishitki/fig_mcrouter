@@ -20,7 +20,7 @@ RUN mkdir /var/run/sshd
 
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
 RUN systemctl enable sshd.service
-#RUN systemctl enable memcached.service
+RUN systemctl enable memcached.service
 
 EXPOSE 22 11211
 VOLUME [ "/sys/fs/cgroup" ]
